@@ -1,9 +1,10 @@
-const mozjpeg = require('imagemin-mozjpeg');
+// tinypng api key
+const API_KEY = 'egouIJM8Ley4XEq4g8Wbtr4g9jXxrnbh';
 
 module.exports = function (grunt) {
-    // congiguration
+
     grunt.initConfig({
-        // 01
+        // 01 
         uncss: {
             test: {
                 files: [{
@@ -22,10 +23,10 @@ module.exports = function (grunt) {
             }
         },
 
-        // 03 Tinypng
+        // 03 
         tinypng: {
             options: {
-                apiKey: "egouIJM8Ley4XEq4g8Wbtr4g9jXxrnbh",
+                apiKey: API_KEY,
                 checkSigs: true,
                 sigFile: 'dest/file_sigs.json',
                 summarize: true,
@@ -46,7 +47,7 @@ module.exports = function (grunt) {
             }
         },
 
-        // 04 Tinyimg
+        // 04 
         tinyimg: {
             dynamic: {
                 files: [{
@@ -59,13 +60,10 @@ module.exports = function (grunt) {
         }
     })
 
-    // loads all the plugins
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-uncss');
     grunt.loadNpmTasks('grunt-tinypng');
     grunt.loadNpmTasks('grunt-tinyimg');
 
-    // -- start with 'grunt' command (starts all the registered tasks added in the brackets)
-    grunt.registerTask("default", ["tinyimg", "tinypng", "uncss", "cssmin"])
+    grunt.registerTask("default", ["tinyimg", "tinypng", "uncss", "cssmin"]);
 }
-
