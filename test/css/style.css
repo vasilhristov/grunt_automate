@@ -1,9 +1,13 @@
+* {
+    box-sizing: border-box;
+}
 
 body {
     background-color: #eee;
     color: #333;
     font-family: sans-serif;
     padding: 1em;
+    background-image: url('../img/luxocollagen-green_cup.png')
 }
 
 h1 {
@@ -22,12 +26,17 @@ a {
     font-size: 1em;
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
 .unused-1 {
     background-color: rebeccapurple;
 }
 
 .unnecessary-2 {
-    color:cornflowerblue;
+    color: cornflowerblue;
 }
 
 .document-loaded {

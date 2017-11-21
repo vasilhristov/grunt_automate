@@ -57,6 +57,18 @@ module.exports = function (grunt) {
                     dest: './test/_outcome/tinyimg'
                 }]
             }
+        },
+
+        // 05
+        cdn: {
+            options: {
+                cdn: 'http://cdn.cloudfront.net/container/'
+            },
+            dist: {
+                cwd: './test/',
+                dest: './test/_outcome/',
+                src: ['index.html', 'css/*.css']
+            }
         }
     })
 
@@ -64,6 +76,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-uncss');
     grunt.loadNpmTasks('grunt-tinypng');
     grunt.loadNpmTasks('grunt-tinyimg');
+    grunt.loadNpmTasks('grunt-cdn');
 
     grunt.registerTask("default", ["tinyimg", "tinypng", "uncss", "cssmin"]);
 }
