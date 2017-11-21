@@ -7,5 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-tinyimg": "^1.0.0",
+    "grunt-tinypng": "^0.7.0",
+    "grunt-uncss": "^0.7.1"
+  }
 }
