@@ -1,23 +1,28 @@
+const mozjpeg = require('imagemin-mozjpeg');
+
 module.exports = function (grunt) {
     // congiguration
     grunt.initConfig({
+        // 01
         uncss: {
             test: {
                 files: [{
                     src: './test/index.html',
-                    dest: './test/clean-css/style.css'
+                    dest: './test/_outcome/clean-css/style.css'
                 }]
             }
         },
 
+        // 02
         cssmin: {
             target: {
                 files: {
-                    './test/minified-css/style.min.css': ['./test/clean-css/style.css']
+                    './test/_outcome/minified-css/style.min.css': ['./test/_outcome/clean-css/style.css']
                 }
             }
         },
 
+        // 03 Tinypng
         tinypng: {
             options: {
                 apiKey: "egouIJM8Ley4XEq4g8Wbtr4g9jXxrnbh",
@@ -29,22 +34,29 @@ module.exports = function (grunt) {
             },
             compress: {
                 files: {
-                    './test/tinypng/': './test/img/*.png'
+                    './test/_outcome/tinypng/': './test/img/*.png'
                 }
+            },
+
+            compress: {
+                expand: true,
+                src: ['**/*.{png,jpg,jpeg}'],
+                cwd: './test/img/',
+                dest: './test/_outcome/tinypng'
             }
         },
 
+        // 04 Tinyimg
         tinyimg: {
             dynamic: {
                 files: [{
                     expand: true,
                     cwd: './test/img',
                     src: ['**/*.{png,jpg,svg}'],
-                    dest: './test/tinyimg'
+                    dest: './test/_outcome/tinyimg'
                 }]
             }
         }
-
     })
 
     // loads all the plugins
@@ -53,6 +65,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-tinypng');
     grunt.loadNpmTasks('grunt-tinyimg');
 
-    // register default task
-    grunt.registerTask("default", ["uncss" , "cssmin", "tinyimg"])
+    // -- start with 'grunt' command (starts all the registered tasks added in the brackets)
+    grunt.registerTask("default", ["tinyimg", "tinypng", "uncss", "cssmin"])
 }
+
